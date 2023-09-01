@@ -8,6 +8,30 @@ const insertIntoDB = async (data: User): Promise<User> => {
   return result;
 };
 
+const getAllUserFromDB = async (): Promise<User[] | null> => {
+  const result = await prisma.user.findMany({});
+  return result;
+};
+const getSingleUserFromDB = async (id: string): Promise<User | null> => {
+  const result = await prisma.user.findUnique({
+    where: {
+      id,
+    },
+  });
+  return result;
+};
+const deleteSingleUserFromDB = async (id: string): Promise<User | null> => {
+  const result = await prisma.user.delete({
+    where: {
+      id,
+    },
+  });
+  return result;
+};
+
 export const UserService = {
   insertIntoDB,
+  getAllUserFromDB,
+  getSingleUserFromDB,
+  deleteSingleUserFromDB,
 };
