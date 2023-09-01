@@ -11,6 +11,8 @@ CREATE TABLE "User" (
     "contactNo" TEXT NOT NULL,
     "address" TEXT NOT NULL,
     "profileImg" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
