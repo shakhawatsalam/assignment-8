@@ -27,8 +27,25 @@ CREATE TABLE "users" (
 CREATE TABLE "categories" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "categories_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "books" (
+    "id" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "author" TEXT NOT NULL,
+    "price" DOUBLE PRECISION NOT NULL,
+    "genre" TEXT NOT NULL,
+    "publicationDate" TIMESTAMP(3) NOT NULL,
+    "categoryId" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "books_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -36,3 +53,6 @@ CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "users_contactNo_key" ON "users"("contactNo");
+
+-- AddForeignKey
+ALTER TABLE "books" ADD CONSTRAINT "books_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "categories"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
