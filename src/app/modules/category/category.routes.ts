@@ -13,4 +13,11 @@ router.post(
   CategoryController.insertIntoDB
 );
 
+router.patch(
+  '/:id',
+  validateRequest(CategoryValidation.update),
+  CategoryController.updateSingleBooksFromDB
+);
+router.delete('/:id', CategoryController.deleteSingleBooksFromDB);
+
 export const CategoryRoutes = router;

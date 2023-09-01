@@ -20,9 +20,33 @@ const getSingleBooksFromDB = async (id: string): Promise<Category | null> => {
   });
   return result;
 };
+const updateSingleBooksFromDB = async (
+  id: string,
+  payload: Partial<Category>
+): Promise<Category | null> => {
+  const result = await prisma.category.update({
+    where: {
+      id,
+    },
+    data: payload,
+  });
+  return result;
+};
+const deleteSingleBooksFromDB = async (
+  id: string
+): Promise<Category | null> => {
+  const result = await prisma.category.delete({
+    where: {
+      id,
+    },
+  });
+  return result;
+};
 
 export const CategoryService = {
   insertIntoDB,
   getAllBooksFromDB,
   getSingleBooksFromDB,
+  updateSingleBooksFromDB,
+  deleteSingleBooksFromDB,
 };
