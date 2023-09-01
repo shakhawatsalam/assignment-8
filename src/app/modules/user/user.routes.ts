@@ -12,7 +12,11 @@ router.post(
   validateRequest(UserValidation.create),
   UserController.insertIntoDB
 );
-router.patch('/:id', UserController.updateSingleUserFromDB);
+router.patch(
+  '/:id',
+  validateRequest(UserValidation.update),
+  UserController.updateSingleUserFromDB
+);
 router.delete('/:id', UserController.deleteSingleUserFromDB);
 
 export const UserRoutes = router;
