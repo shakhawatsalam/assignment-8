@@ -11,6 +11,9 @@ const create = z.object({
     password: z.string({
       required_error: 'Password is Required',
     }),
+    contactNo: z.string({
+      required_error: 'contactNo is Required',
+    }),
     role: z.enum([...Object.values(UserRole)] as [string, ...string[]], {
       required_error: 'Role Is Required',
     }),
@@ -29,6 +32,7 @@ const update = z.object({
       name: z.string().optional(),
       email: z.string().optional(),
       password: z.string().optional(),
+      contactNo: z.string().optional(),
       role: z
         .enum([...Object.values(UserRole)] as [string, ...string[]], {})
         .optional(),
