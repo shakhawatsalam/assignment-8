@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 import catchAsync from '../../../shared/catchAsync';
+import pick from '../../../shared/pick';
 import sendResponse from '../../../shared/sendResponse';
 import { BookService } from './book.service';
 
@@ -14,12 +15,22 @@ const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
   });
 });
 const getAllBookFromDB = catchAsync(async (req: Request, res: Response) => {
-  const result = await BookService.getAllBookFromDB();
+  const filter = pick(req.query, [
+    'searchTerm',
+    'title',
+    'author',
+    'genre',
+    'maxPrice',
+    'minPrice',
+  ]);
+  const options = pick(req.query, ['limit', 'page', 'sortBy', 'sortOrder']);
+  const result = await BookService.getAllBookFromDB(filter, options);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Book Inserted Successfully',
-    data: result,
+    message: 'Books fetched successfully',
+    meta: result.meta,
+    data: result.data,
   });
 });
 const getSingleBookFromDB = catchAsync(async (req: Request, res: Response) => {
