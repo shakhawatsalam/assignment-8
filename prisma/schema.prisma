@@ -79,7 +79,8 @@ model Order {
   orderedBooks Json
   status       Status   @default(pending)
   createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+
+  @@map("orders")
 }
 
 enum Status {
