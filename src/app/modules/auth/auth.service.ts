@@ -1,35 +1,43 @@
 import { User } from '@prisma/client';
+import httpStatus from 'http-status';
 import { Secret } from 'jsonwebtoken';
 import config from '../../../config';
+import ApiError from '../../../errors/ApiError';
 import { jwtHelpers } from '../../../helpers/jwtHelpers';
 import prisma from '../../../shared/prisma';
+import { ILoginUser } from './auth.interface';
 
-const insertIntoDB = async (data: User) => {
+const SignUP = async (data: User) => {
   const result = await prisma.user.create({
     data,
   });
-  const user = await prisma.user.findFirst({
+  return result;
+};
+
+const loginUser = async (payload: ILoginUser): Promise<string> => {
+  const { email, password } = payload;
+  const isUserExist = await prisma.user.findFirst({
     where: {
-      id: result.id,
+      email,
+      password,
     },
   });
+  if (!isUserExist) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'User Not Found');
+  }
 
-  // generate new token
-  const newAccessToken = jwtHelpers.createToken(
-    {
-      id: user?.id,
-      role: user?.role,
-    },
-
+  // create assess token
+  const { id: userId, role } = isUserExist;
+  const accessToken = jwtHelpers.createToken(
+    { userId, role },
     config.jwt.secret as Secret,
     config.jwt.expires_in as string
   );
-  return {
-    result,
-    newAccessToken,
-  };
+
+  return accessToken;
 };
 
 export const AuthService = {
-  insertIntoDB,
+  SignUP,
+  loginUser,
 };
