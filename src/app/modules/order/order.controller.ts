@@ -15,6 +15,31 @@ const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const getAllOrder = catchAsync(async (req: Request, res: Response) => {
+  const result = await OrderService.getAllOrder();
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Category Fetched Successfully',
+    data: result,
+  });
+});
+
+const getSingleOrder = catchAsync(async (req: Request, res: Response) => {
+  const { orderId } = req.params;
+  const result = await OrderService.getSingleOrder(orderId);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Category Fetched Successfully',
+    data: result,
+  });
+});
+
 export const OrderController = {
   insertIntoDB,
+  getAllOrder,
+  getSingleOrder,
 };
