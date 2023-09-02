@@ -7,11 +7,7 @@ const router = express.Router();
 
 router.get('/', UserController.getAllUserFromDB);
 router.get('/:id', UserController.getSingleUserFromDB);
-router.post(
-  '/',
-  validateRequest(UserValidation.create),
-  UserController.insertIntoDB
-);
+
 router.patch(
   '/:id',
   validateRequest(UserValidation.update),
