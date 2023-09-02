@@ -3,6 +3,7 @@ import { AuthRouter } from '../modules/auth/auth.routes';
 import { BookRouter } from '../modules/book/book.routes';
 import { CategoryRoutes } from '../modules/category/category.routes';
 import { OrderRoutes } from '../modules/order/order.routes';
+import { ProfileRoutes } from '../modules/profile/profile.routes';
 import { ReviewAndRating } from '../modules/reviewAndRating/reviewAndRating.routes';
 import { UserRoutes } from '../modules/user/user.routes';
 
@@ -13,6 +14,10 @@ const moduleRoutes = [
   {
     path: '/auth',
     route: AuthRouter,
+  },
+  {
+    path: '/profile',
+    route: ProfileRoutes,
   },
   {
     path: '/user',
