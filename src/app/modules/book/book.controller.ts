@@ -32,6 +32,18 @@ const getSingleBookFromDB = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+const getByCategoryIDFromDB = catchAsync(
+  async (req: Request, res: Response) => {
+    const { categoryId } = req.params;
+    const result = await BookService.getByCategoryIDFromDB(categoryId);
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Book Inserted Successfully',
+      data: result,
+    });
+  }
+);
 const updateSingleBookFromDB = catchAsync(
   async (req: Request, res: Response) => {
     const { id } = req.params;
@@ -62,6 +74,7 @@ export const BookController = {
   insertIntoDB,
   getAllBookFromDB,
   getSingleBookFromDB,
+  getByCategoryIDFromDB,
   updateSingleBookFromDB,
   deleteSingleBookFromDB,
 };
