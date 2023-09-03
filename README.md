@@ -1,69 +1,67 @@
-# University Management Core Service
-This guide will walk you through the process of setting up the University Management Core Service Starter project. By following these steps, you will clone the project, install dependencies, and configure Prisma for database management. Let's get started!
+# Application Routes:
 
+# Assignment - 8
 
-## Installation Steps
-### Follow these steps to clone and set up starter project:
+# Live Link : https://assignment-8-one-ruddy.vercel.app/
 
-1. `Clone the project:` Open your terminal or command prompt and run the following command to clone the project repository:
+# User
 
-```bash
-git clone https://github.com/Programming-Hero-Next-Level-Development/university-management-core-service-starter.git university-management-core-service
-```
+- https://assignment-8-one-ruddy.vercel.app/api/v1/auth/signup (Post)
 
-2. `Navigate into the project directory:` Use the cd command to navigate into the project directory:
+- https://assignment-8-one-ruddy.vercel.app/api/v1/auth/login (Post)
 
-```bash
-cd university-management-core-service
-```
+- https://assignment-8-one-ruddy.vercel.app/api/v1/user (Get Admin Only)
 
-3. `Install project dependencies:` Next, install the project dependencies by running the following command:
+- https://assignment-8-one-ruddy.vercel.app/api/v1/user/cb4949f3-05d2-4edb-85e6-3f51802ecf2d (Get Admin Only)
 
-```bash
-yarn install
-```
+- https://assignment-8-one-ruddy.vercel.app/api/v1/user/cb4949f3-05d2-4edb-85e6-3f51802ecf2d (Update Admin Only)
 
-4. Configure Prisma and the database connection:
+- https://assignment-8-one-ruddy.vercel.app/api/v1/user/cb4949f3-05d2-4edb-85e6-3f51802ecf2d (Delete Admin Only)
 
-- Add Prisma as a development dependency by running the following command:
-```bash
-yarn add prisma --save-dev
-```
+- https://assignment-8-one-ruddy.vercel.app/api/v1/profile (Get)
 
-- Set up your Prisma project by creating the Prisma schema file using the following command:
-```bash
-npx prisma init
-```
+# Category
 
-- Open the prisma/schema.prisma file and configure your database connection details.
+- https://assignment-8-one-ruddy.vercel.app/api/v1/categories/create-category (Post Admin Only)
 
-```bash
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-```
+- https://assignment-8-one-ruddy.vercel.app/api/v1/categories (Get)
 
-- Create a .env file in the project root directory and set the DATABASE_URL environment variable. Replace the placeholders with your database connection details:
-```bash
-DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=SCHEMA"
-```
+- https://assignment-8-one-ruddy.vercel.app/api/v1/categories/212b892e-62f1-4222-9402-36cd31f7ec2e (Get)
 
-5. Creating the database schema
-6. Migrate the database schema: Use the following command to create and apply the initial database schema:
+- https://assignment-8-one-ruddy.vercel.app/api/v1/categories/212b892e-62f1-4222-9402-36cd31f7ec2e (Update Admin Only)
 
-```bash
-npx prisma migrate dev --name init
-```
-This command creates a new migration file based on your schema changes and applies it to your database.
+- https://assignment-8-one-ruddy.vercel.app/api/v1/categories/212b892e-62f1-4222-9402-36cd31f7ec2e (Delete Admin Only)
 
-6. `Install Prisma Client:` Install the Prisma Client library by running the following command:
-```bash
-yarn add @prisma/client
-```
+# Books
 
-This command installs the Prisma Client, which provides an interface to interact with your database.
+- https://assignment-8-one-ruddy.vercel.app/api/v1/books/create-book (Post Admin Only)
 
-That's it! You have successfully set up the University Management Core Service Starter project. You can now start exploring and working with the codebase. Refer to the project documentation or README for further instructions on how to run and use the core service.
+- https://assignment-8-one-ruddy.vercel.app/api/v1/books (Get)
 
-Happy coding!
+- https://assignment-8-one-ruddy.vercel.app/api/v1/books/d82b4e37-750d-46d0-9ce5-6d13f7958ee3 (Get)
+
+- https://assignment-8-one-ruddy.vercel.app/api/v1/books/4031f3ff-d2c7-4b5b-870c-b1061e57fd0e/category (Get)
+
+- https://assignment-8-one-ruddy.vercel.app/api/v1/books/d82b4e37-750d-46d0-9ce5-6d13f7958ee3 (Update Admin Only)
+
+- https://assignment-8-one-ruddy.vercel.app/api/v1/books/d82b4e37-750d-46d0-9ce5-6d13f7958ee3 (Delete Admin Only)
+
+# Orders
+
+- https://assignment-8-one-ruddy.vercel.app/api/v1/orders/create-order (Customer)
+
+- https://assignment-8-one-ruddy.vercel.app/api/v1/orders (Get According to Condition Admin Can See All Order Customer Can See Only Customer's All Order)
+
+- https://assignment-8-one-ruddy.vercel.app/api/v1/orders/ecb41b31-a185-4fba-8751-5cbb422b5fba (Get Admin Can see this order But Customer --> if the Order is Login customer's order then the Customer can See this order)
+
+# Review and Rating
+
+- https://assignment-8-one-ruddy.vercel.app/api/v1/reviewandrating (Post)
+
+- https://assignment-8-one-ruddy.vercel.app/api/v1/reviewandrating (Get)
+
+- https://assignment-8-one-ruddy.vercel.app/api/v1/reviewandrating/ce9aa122-80cc-48ad-9b77-981f3bbcd3eb (Get)
+
+- https://assignment-8-one-ruddy.vercel.app/api/v1/reviewandrating/ce9aa122-80cc-48ad-9b77-981f3bbcd3eb (Delete)
+
+- https://assignment-8-one-ruddy.vercel.app/api/v1/reviewandrating/ce9aa122-80cc-48ad-9b77-981f3bbcd3eb (Update)

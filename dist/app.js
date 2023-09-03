@@ -18,7 +18,7 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.use('/api/v1', routes_1.default);
 // Testing
 app.get('/', (req, res) => {
-    res.send('Hello World! Assignment-4 🚀🚀🚀🚀');
+    res.send('Hello World! Assignment-8 🚀🚀🚀🚀');
 });
 //global error handler
 app.use(globalErrorHandler_1.default);
