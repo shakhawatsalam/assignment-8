@@ -19,7 +19,8 @@ const getAllBookFromDB = async (
   filters: IBookFilterRequest,
   options: IPaginationOptions
 ): Promise<IGenericResponse<Book[]>> => {
-  const { page, limit, skip } = paginationHelpers.calculatePagination(options);
+  const { page, limit, skip, sortBy, sortOrder } =
+    paginationHelpers.calculatePagination(options);
   const { searchTerm, minPrice, maxPrice, ...filtersData } = filters;
 
   const andCondition = [];
@@ -69,12 +70,9 @@ const getAllBookFromDB = async (
     where: whereCondition,
     skip,
     take: limit,
-    orderBy:
-      options.sortBy && options.sortOrder
-        ? { [options.sortBy]: options.sortOrder }
-        : {
-            createdAt: 'desc',
-          },
+    orderBy: {
+      [sortBy]: sortOrder,
+    },
   });
   const total = await prisma.book.count({
     where: whereCondition,
