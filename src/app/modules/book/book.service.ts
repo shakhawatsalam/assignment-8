@@ -57,6 +57,7 @@ const getAllBookFromDB = async (
       AND: Object.keys(filtersData).map(key => ({
         [key]: {
           equals: (filtersData as any)[key],
+          mode: 'insensitive',
         },
       })),
     });
