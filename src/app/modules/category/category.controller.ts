@@ -44,7 +44,7 @@ const updateSingleBooksFromDB = catchAsync(
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Category Deleted Successfully',
+      message: 'Category Updated Successfully',
       data: result,
     });
   }

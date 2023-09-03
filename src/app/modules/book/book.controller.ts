@@ -39,7 +39,7 @@ const getSingleBookFromDB = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Book Inserted Successfully',
+    message: 'Single Book Fetched Successfully',
     data: result,
   });
 });
@@ -50,7 +50,7 @@ const getByCategoryIDFromDB = catchAsync(
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Book Inserted Successfully',
+      message: 'Book Fetched By Category Successfully',
       data: result,
     });
   }
@@ -63,7 +63,7 @@ const updateSingleBookFromDB = catchAsync(
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Book Inserted Successfully',
+      message: 'Book Updated Successfully',
       data: result,
     });
   }
@@ -75,7 +75,7 @@ const deleteSingleBookFromDB = catchAsync(
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Book Inserted Successfully',
+      message: 'Book Deleted Successfully',
       data: result,
     });
   }

@@ -20,7 +20,7 @@ const getAllReview = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'All User Fetched Successfully',
+    message: 'All Review Fetched Successfully',
     data: result,
   });
 });
@@ -32,7 +32,7 @@ const getSingleReview = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'All User Fetched Successfully',
+    message: 'Review Fetched Successfully',
     data: result,
   });
 });
@@ -56,7 +56,7 @@ const deleteSingleReview = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'All User Fetched Successfully',
+    message: 'Review deleted Successfully',
     data: result,
   });
 });

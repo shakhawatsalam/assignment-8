@@ -34,7 +34,7 @@ const updateSingleUserFromDB = catchAsync(
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Single User Fetched Successfully',
+      message: 'Single User Updated Successfully',
       data: result,
     });
   }

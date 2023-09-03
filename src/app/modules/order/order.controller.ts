@@ -30,7 +30,7 @@ const getAllOrder = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Category Fetched Successfully',
+    message: 'Order Fetched Successfully',
     data: result,
   });
 });
@@ -53,7 +53,7 @@ const getSingleOrder = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Category Fetched Successfully',
+    message: 'Order Fetched Successfully',
     data: result,
   });
 });
