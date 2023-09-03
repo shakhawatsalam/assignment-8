@@ -1,125 +1,75 @@
-'use strict';
-var __awaiter =
-  (this && this.__awaiter) ||
-  function (thisArg, _arguments, P, generator) {
-    function adopt(value) {
-      return value instanceof P
-        ? value
-        : new P(function (resolve) {
-            resolve(value);
-          });
-    }
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
-      function fulfilled(value) {
-        try {
-          step(generator.next(value));
-        } catch (e) {
-          reject(e);
-        }
-      }
-      function rejected(value) {
-        try {
-          step(generator['throw'](value));
-        } catch (e) {
-          reject(e);
-        }
-      }
-      function step(result) {
-        result.done
-          ? resolve(result.value)
-          : adopt(result.value).then(fulfilled, rejected);
-      }
-      step((generator = generator.apply(thisArg, _arguments || [])).next());
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
-  };
-var __importDefault =
-  (this && this.__importDefault) ||
-  function (mod) {
-    return mod && mod.__esModule ? mod : { default: mod };
-  };
-Object.defineProperty(exports, '__esModule', { value: true });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReviewAndRatingController = void 0;
-const http_status_1 = __importDefault(require('http-status'));
-const catchAsync_1 = __importDefault(require('../../../shared/catchAsync'));
-const sendResponse_1 = __importDefault(require('../../../shared/sendResponse'));
-const reviewAndRating_service_1 = require('./reviewAndRating.service');
-const insertIntoDb = (0, catchAsync_1.default)((req, res) =>
-  __awaiter(void 0, void 0, void 0, function* () {
-    const result =
-      yield reviewAndRating_service_1.ReviewAndRatingService.insertIntoDb(
-        req.body
-      );
+const http_status_1 = __importDefault(require("http-status"));
+const catchAsync_1 = __importDefault(require("../../../shared/catchAsync"));
+const sendResponse_1 = __importDefault(require("../../../shared/sendResponse"));
+const reviewAndRating_service_1 = require("./reviewAndRating.service");
+const insertIntoDb = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield reviewAndRating_service_1.ReviewAndRatingService.insertIntoDb(req.body);
     (0, sendResponse_1.default)(res, {
-      statusCode: http_status_1.default.OK,
-      success: true,
-      message: 'Review and Rating is Created',
-      data: result,
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'Review and Rating is Created',
+        data: result,
     });
-  })
-);
-const getAllReview = (0, catchAsync_1.default)((req, res) =>
-  __awaiter(void 0, void 0, void 0, function* () {
-    const result =
-      yield reviewAndRating_service_1.ReviewAndRatingService.getAllReview();
+}));
+const getAllReview = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield reviewAndRating_service_1.ReviewAndRatingService.getAllReview();
     (0, sendResponse_1.default)(res, {
-      statusCode: http_status_1.default.OK,
-      success: true,
-      message: 'All User Fetched Successfully',
-      data: result,
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'All User Fetched Successfully',
+        data: result,
     });
-  })
-);
-const getSingleReview = (0, catchAsync_1.default)((req, res) =>
-  __awaiter(void 0, void 0, void 0, function* () {
+}));
+const getSingleReview = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const result =
-      yield reviewAndRating_service_1.ReviewAndRatingService.getSingleReview(
-        id
-      );
+    const result = yield reviewAndRating_service_1.ReviewAndRatingService.getSingleReview(id);
     (0, sendResponse_1.default)(res, {
-      statusCode: http_status_1.default.OK,
-      success: true,
-      message: 'All User Fetched Successfully',
-      data: result,
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'All User Fetched Successfully',
+        data: result,
     });
-  })
-);
-const updateSingleReview = (0, catchAsync_1.default)((req, res) =>
-  __awaiter(void 0, void 0, void 0, function* () {
+}));
+const updateSingleReview = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const data = req.body;
-    const result =
-      yield reviewAndRating_service_1.ReviewAndRatingService.updateSingleReview(
-        id,
-        data
-      );
+    const result = yield reviewAndRating_service_1.ReviewAndRatingService.updateSingleReview(id, data);
     (0, sendResponse_1.default)(res, {
-      statusCode: http_status_1.default.OK,
-      success: true,
-      message: 'Review Updated  Successfully',
-      data: result,
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'Review Updated  Successfully',
+        data: result,
     });
-  })
-);
-const deleteSingleReview = (0, catchAsync_1.default)((req, res) =>
-  __awaiter(void 0, void 0, void 0, function* () {
+}));
+const deleteSingleReview = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const result =
-      yield reviewAndRating_service_1.ReviewAndRatingService.deleteSingleReview(
-        id
-      );
+    const result = yield reviewAndRating_service_1.ReviewAndRatingService.deleteSingleReview(id);
     (0, sendResponse_1.default)(res, {
-      statusCode: http_status_1.default.OK,
-      success: true,
-      message: 'All User Fetched Successfully',
-      data: result,
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'All User Fetched Successfully',
+        data: result,
     });
-  })
-);
+}));
 exports.ReviewAndRatingController = {
-  insertIntoDb,
-  getAllReview,
-  getSingleReview,
-  deleteSingleReview,
-  updateSingleReview,
+    insertIntoDb,
+    getAllReview,
+    getSingleReview,
+    deleteSingleReview,
+    updateSingleReview,
 };
